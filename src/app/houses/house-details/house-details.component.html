@@ -1,27 +1,34 @@
 <div data-testid="back-button" class="padded">
-  <jesi-button>🡄 Back to houses</jesi-button>
+  <jesi-button [routerLink]="['/houses']">🡄 Back to houses</jesi-button>
 </div>
 
-<main class="padded spaced">
+<main class="padded spaced" *ngIf="house$ | async as house">
   <aside>
     <img />
   </aside>
   <div>
     <h2>
-      <!-- HOUSE NAME -->
+      {{ house.name }}
     </h2>
     <h3>
-      <!-- HOUSE REGION - HOUSE SEAT -->
+        {{ house.region }}
     </h3>
+    <h4>
+        {{ house.seat }}
+    </h4>
     <dl>
-      <dt>Words</dt>
-      <dd>
-        <!-- HOUSE WORDS -->
-      </dd>
-      <dt>Coat of arms</dt>
-      <dd>
-        <!-- HOUSE COAT OF ARMS -->
-      </dd>
+      <div *ngIf="(house.words)">
+        <dt>Words</dt>
+        <dd>
+          {{ house.words }}
+        </dd>
+      </div>
+      <div *ngIf="(house.coatOfArms)">
+        <dt>Coat of arms</dt>
+        <dd>
+          {{ house.coatOfArms }}
+        </dd>
+      </div>
     </dl>
   </div>
 </main>
