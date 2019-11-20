@@ -4,7 +4,7 @@
 
 <main class="padded spaced" *ngIf="house$ | async as house">
   <aside>
-    <img />
+      <img [src]="house.imagePath" [alt]="house.coatOfArms" />
   </aside>
   <div>
     <h2>
@@ -12,10 +12,8 @@
     </h2>
     <h3>
         {{ house.region }}
-    </h3>
-    <h4>
         {{ house.seat }}
-    </h4>
+    </h3>
     <dl>
       <div *ngIf="(house.words)">
         <dt>Words</dt>

@@ -13,11 +13,11 @@
           {{ character.title }}
         </dd>
      </div>
-     <div *ngIf="(character.aliases)">
+     <div *ngIf="character.aliases.length>0">
         <dt>Aliases</dt>
-        <dd>
-          {{ character.aliases }}
-        </dd>
+        <dd *ngFor="let alias of character.aliases">
+                {{ alias }} ,
+            </dd>
       </div>
     </dl>
   </div>
