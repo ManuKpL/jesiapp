@@ -1,20 +1,24 @@
-<section class="spaced">
+<section class="spaced" *ngIf="character">
   <h3>
-    <!-- CHARACTER NAME -->
+    {{ character.name }}
   </h3>
   <aside>
-    <img />
+    <img [src]="character.imagePath" [alt]="character.name" />
   </aside>
   <div>
     <dl>
-      <dt>Title</dt>
-      <dd>
-        <!-- CHARACTER TITLE -->
-      </dd>
-      <dt>Aliases</dt>
-      <dd>
-        <!-- CHARACTER ALIASES IN A SINGLE STRING, SEPARATED BY COMAS -->
-      </dd>
+      <div *ngIf="(character.title)">
+        <dt>Title</dt>
+        <dd>
+          {{ character.title }}
+        </dd>
+     </div>
+     <div *ngIf="(character.aliases)">
+        <dt>Aliases</dt>
+        <dd>
+          {{ character.aliases }}
+        </dd>
+      </div>
     </dl>
   </div>
 </section>
