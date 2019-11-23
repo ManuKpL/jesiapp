@@ -1,5 +1,21 @@
+@import '../../../styles/variables';
+
 :host {
   display: grid;
+}
+
+.favorite::after {
+  content: '❤';
+  position: absolute;
+  padding: 5px;
+  color: white;
+  right: 5px;
+  top: 5px;
+  background-color: $jesi-primary;
+  width: 15px;
+  line-height: 15px;
+  border-radius: 50%;
+  border: 1px solid;
 }
 
 .container {

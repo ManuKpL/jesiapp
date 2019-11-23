@@ -44,4 +44,17 @@ export class UserService {
 
     return of(null);
   }
+
+  public addFavoriteHouse(houseId: number): Observable<User> {
+    if (this.authenticatedUser) {
+      return this.resource.updateUser(this.authenticatedUser.id, { favoriteHouse: houseId }).pipe(
+        map(User.NEW),
+        tap(user => {
+          this.authenticatedUser = user;
+        }),
+      );
+    }
+
+    return of(null);
+  }
 }

@@ -1,31 +1,30 @@
 <div data-testid="back-button" class="padded">
-  <jesi-button>🡄 Back to houses</jesi-button>
+  <jesi-button routerLink="/houses">🡄 Back to houses</jesi-button>
 </div>
 
-<main class="padded spaced">
-  <aside>
-    <img />
+<main class="padded spaced" *ngIf="house$ | async as house; else loading">
+  <aside [class.favorite]="isFavorite">
+    <img [src]="house.imagePath" [alt]="house.coatOfArms" />
   </aside>
   <div>
-    <h2>
-      <!-- HOUSE NAME -->
-    </h2>
-    <h3>
-      <!-- HOUSE REGION - HOUSE SEAT -->
-    </h3>
+    <h2>{{ house.name }}</h2>
+    <h3>{{ house.region }} - {{ house.seat }}</h3>
     <dl>
-      <dt>Words</dt>
-      <dd>
-        <!-- HOUSE WORDS -->
-      </dd>
+      <ng-container *ngIf="house.words">
+        <dt>Words</dt>
+        <dd>{{ house.words }}</dd>
+      </ng-container>
       <dt>Coat of arms</dt>
-      <dd>
-        <!-- HOUSE COAT OF ARMS -->
-      </dd>
+      <dd>{{ house.coatOfArms }}</dd>
     </dl>
+    <jesi-button primary (click)="addAsFavorite(house.id)" *ngIf="!isFavorite">Fav ❤</jesi-button>
   </div>
 </main>
 
-<section>
-  <!-- CHARACTERS GO HERE -->
+<section *ngIf="characters$ | async as characters; else loading">
+  <jesi-character-card *ngFor="let character of characters" [character]="character"></jesi-character-card>
 </section>
+
+<ng-template #loading>
+  <jesi-loader center></jesi-loader>
+</ng-template>

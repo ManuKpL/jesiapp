@@ -1,20 +1,16 @@
-<section class="spaced">
-  <h3>
-    <!-- CHARACTER NAME -->
-  </h3>
+<section class="spaced" [class.star]="character.aliases.length > 3">
+  <h3>{{ character.name }}</h3>
   <aside>
-    <img />
+    <img [src]="character.imagePath" [alt]="character.name" />
   </aside>
   <div>
     <dl>
       <dt>Title</dt>
-      <dd>
-        <!-- CHARACTER TITLE -->
-      </dd>
-      <dt>Aliases</dt>
-      <dd>
-        <!-- CHARACTER ALIASES IN A SINGLE STRING, SEPARATED BY COMAS -->
-      </dd>
+      <dd>{{ character.title }}</dd>
+      <ng-container *ngIf="character.aliases.length">
+        <dt>Aliases</dt>
+        <dd>{{ character.aliases.join(', ') }}</dd>
+      </ng-container>
     </dl>
   </div>
 </section>

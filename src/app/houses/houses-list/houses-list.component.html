@@ -1,5 +1,6 @@
 <section *ngIf="houses$ | async as houses; else loading" data-testid="display-houses">
-  <jesi-house-thumbnail *ngFor="let house of houses" [house]="house" (click)="openDetails(house.id)">
+  <jesi-house-thumbnail *ngFor="let house of houses" [house]="house" [isFavorite]="house.id === favoriteHouseId"
+    (click)="openDetails(house.id)">
   </jesi-house-thumbnail>
 </section>
 

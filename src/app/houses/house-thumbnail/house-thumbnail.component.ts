@@ -8,4 +8,5 @@ import { House } from '../House';
 })
 export class HouseThumbnailComponent {
   @Input() house: House;
+  @Input() isFavorite: boolean;
 }

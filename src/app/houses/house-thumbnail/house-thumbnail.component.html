@@ -1,4 +1,4 @@
-<div class="container" *ngIf="house">
+<div class="container" [class.favorite]="isFavorite" *ngIf="house">
   <img [src]="house.imagePath" [alt]="house.name" />
   <div class="content">
     <h3>{{ house.name }}</h3>
